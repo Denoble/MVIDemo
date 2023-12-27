@@ -1,6 +1,7 @@
 package com.gevcorst.mvidemo.di
 
 import com.gevcorst.mvidemo.Constants
+import com.gevcorst.mvidemo.repository.RepoImpl
 import com.gevcorst.mvidemo.repository.RepositoryImpl
 import com.gevcorst.mvidemo.repository.network.HeadLineNewsService
 import com.gevcorst.mvidemo.repository.network.Interceptor
@@ -68,5 +69,10 @@ object RetrofitModule{
     @Provides
     fun provideRepositoryImp():RepositoryImpl{
         return  RepositoryImpl()
+    }
+    @Singleton
+    @Provides
+    fun provideRepoImp():RepoImpl{
+        return RepoImpl()
     }
 }

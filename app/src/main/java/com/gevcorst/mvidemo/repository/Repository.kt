@@ -26,3 +26,9 @@ class RepositoryImpl():Repository{
     }
 
 }
+class RepoImpl():Repository{
+    override suspend fun getTopHeadLines(): Flow<NewsState> = flow{
+
+    }
+
+}

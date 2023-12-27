@@ -2,6 +2,7 @@ package com.gevcorst.mvidemo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gevcorst.mvidemo.di.First
 import com.gevcorst.mvidemo.repository.Repository
 import com.gevcorst.mvidemo.repository.RepositoryImpl
 import com.gevcorst.mvidemo.ui.NewsIntents
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel @Inject constructor(val repo:
+class NewsViewModel @Inject constructor(@First val repo:
                                         Repository) : ViewModel() {
     val channel = Channel<NewsState>()
     private val _newsState = MutableStateFlow<NewsState>(NewsState.loading)
