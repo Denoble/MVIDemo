@@ -3,7 +3,7 @@ package com.gevcorst.mvidemo.ui
 import com.gevcorst.mvidemo.model.NewsData
 
 sealed class NewsIntents {
-    object topHeadLinesIntent:NewsIntents()
+    object TopHeadLinesIntent:NewsState()
 }
 sealed class NewsState{
     object loading:NewsState()

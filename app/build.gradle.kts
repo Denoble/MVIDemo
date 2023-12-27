@@ -53,6 +53,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-rc02")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0-rc02")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0-rc02")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0-rc02")
+    implementation("androidx.activity:activity-ktx:1.9.0-alpha01")
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.0-RC2")
     //okhttp
@@ -70,6 +72,8 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.15.0")
     implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
