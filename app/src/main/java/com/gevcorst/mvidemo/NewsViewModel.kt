@@ -2,17 +2,22 @@ package com.gevcorst.mvidemo
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gevcorst.mvidemo.repository.Repository
 import com.gevcorst.mvidemo.repository.RepositoryImpl
 import com.gevcorst.mvidemo.ui.NewsIntents
 import com.gevcorst.mvidemo.ui.NewsState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NewsViewModel() : ViewModel() {
+@HiltViewModel
+class NewsViewModel @Inject constructor(val repo:
+                                        Repository) : ViewModel() {
     val channel = Channel<NewsState>()
     private val _newsState = MutableStateFlow<NewsState>(NewsState.loading)
     val newState: StateFlow<NewsState> = _newsState
@@ -26,6 +31,10 @@ class NewsViewModel() : ViewModel() {
             channel.consumeAsFlow().collect {
                 when (it) {
                     NewsIntents.TopHeadLinesIntent -> getMainHeadLines()
+                    NewsState.loading ->{}
+                    is NewsState.Error ->{
+
+                    }
                     else -> {}
                 }
             }
@@ -33,7 +42,7 @@ class NewsViewModel() : ViewModel() {
     }
 
     private suspend fun getMainHeadLines() {
-        RepositoryImpl().getTopHeadLines().collect {
+        repo.getTopHeadLines().collect {
             _newsState.value = it
         }
     }
